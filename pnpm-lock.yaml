@@ -9,40 +9,40 @@ importers:
   .:
     devDependencies:
       '@commitlint/cli':
-        specifier: ^19.8.1
+        specifier: 19.8.1
         version: 19.8.1(@types/node@22.15.30)(typescript@5.8.3)
       '@commitlint/config-conventional':
-        specifier: ^19.8.1
+        specifier: 19.8.1
         version: 19.8.1
       '@eslint/js':
-        specifier: ^9.28.0
+        specifier: 9.28.0
         version: 9.28.0
       '@stylistic/eslint-plugin':
-        specifier: ^4.4.1
+        specifier: 4.4.1
         version: 4.4.1(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3)
       '@types/node':
-        specifier: ^22.15.30
+        specifier: 22.15.30
         version: 22.15.30
       '@vitest/coverage-v8':
-        specifier: ^3.2.3
+        specifier: 3.2.3
         version: 3.2.3(vitest@3.2.3(@types/node@22.15.30)(jiti@2.4.2))
       eslint:
-        specifier: ^9.28.0
+        specifier: 9.28.0
         version: 9.28.0(jiti@2.4.2)
       lefthook:
-        specifier: ^1.11.13
+        specifier: 1.11.13
         version: 1.11.13
       tsup:
-        specifier: ^8.5.0
+        specifier: 8.5.0
         version: 8.5.0(jiti@2.4.2)(postcss@8.5.4)(typescript@5.8.3)
       typescript:
-        specifier: ^5.8.3
+        specifier: 5.8.3
         version: 5.8.3
       typescript-eslint:
-        specifier: ^8.33.1
+        specifier: 8.33.1
         version: 8.33.1(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3)
       vitest:
-        specifier: ^3.2.3
+        specifier: 3.2.3
         version: 3.2.3(@types/node@22.15.30)(jiti@2.4.2)
 
 packages:
