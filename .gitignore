@@ -11,3 +11,7 @@ dist
 # pnpm
 .pnpm-store
 .pnpm-debug.log
+
+# lefthook
+.lefthook-local/
+lefthook-local.yml

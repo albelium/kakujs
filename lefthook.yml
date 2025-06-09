@@ -1,0 +1,17 @@
+pre-commit:
+  parallel: true
+  commands:
+    lint:
+      glob: "*.{js,ts,json}"
+      run: pnpm run lint:fix
+    format:
+      glob: "*.{js,ts,json,md}"
+      run: pnpm run format
+    type-check:
+      glob: "*.{ts,tsx}"
+      run: pnpm run type-check
+
+commit-msg:
+  commands:
+    commitlint:
+      run: pnpm commitlint --edit {1}
