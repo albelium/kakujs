@@ -6,3 +6,7 @@ dist
 
 # mise
 .mise.local.toml
+
+# pnpm
+.pnpm-store
+.pnpm-debug.log
