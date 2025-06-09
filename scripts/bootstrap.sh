@@ -21,9 +21,4 @@ pnpm install
 echo "🪝 Installing git hooks..."
 pnpm lefthook install
 
-# Create necessary directories
-echo "📁 Creating directories..."
-mkdir -p dist docs
-
 echo "✅ Bootstrap complete!"
-echo "Run 'pnpm run dev' to start development"
