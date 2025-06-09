@@ -15,3 +15,7 @@ dist
 # lefthook
 .lefthook-local/
 lefthook-local.yml
+
+# vitest
+coverage/
+.vitest-cache/
