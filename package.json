@@ -18,6 +18,10 @@
   ],
   "scripts": {
     "type-check": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "eslint . --fix",
+    "format:check": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -38,8 +42,12 @@
   },
   "homepage": "https://github.com/albelium/kakujs#readme",
   "devDependencies": {
+    "@eslint/js": "^9.28.0",
+    "@stylistic/eslint-plugin": "4.4.1",
     "@types/node": "^22",
-    "typescript": "5.8.3"
+    "eslint": "9.28.0",
+    "typescript": "5.8.3",
+    "typescript-eslint": "^8.33.1"
   },
   "engines": {
     "node": ">=18.0.0"
