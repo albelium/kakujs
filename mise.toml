@@ -1,0 +1,19 @@
+[tools]
+node = "22.16.0"      # NOT "22" or "latest"
+pnpm = "10.11.1"      # NOT "10" or "latest"
+
+[tasks.bootstrap]
+description = "Bootstrap project dependencies and setup"
+run = "./scripts/bootstrap.sh"
+
+[tasks.dev]
+description = "Start development environment"
+run = "pnpm run dev"
+
+[tasks.test]
+description = "Run tests"  
+run = "pnpm run test"
+
+[tasks.lint]
+description = "Run linting"
+run = "pnpm run lint"
