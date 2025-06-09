@@ -3,6 +3,7 @@ node_modules
 dist
 *.log
 .DS_Store
+*.tsbuildinfo
 
 # mise
 .mise.local.toml
