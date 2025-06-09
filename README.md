@@ -15,7 +15,4 @@ cd kakujs
 mise run bootstrap
 # or
 ./scripts/bootstrap.sh
-
-# Start development
-pnpm run dev
 ```
