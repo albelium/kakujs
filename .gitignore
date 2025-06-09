@@ -1,4 +1,4 @@
-.idea
+.idea/
 node_modules
 dist
 *.log
@@ -19,3 +19,6 @@ lefthook-local.yml
 # vitest
 coverage/
 .vitest-cache/
+
+# Claude
+.claude/
