@@ -1,19 +1,50 @@
 {
-  "name": "kakujs",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "@kakujs/core",
+  "version": "0.0.1",
+  "description": "TypeScript library for Japanese data handling",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "type-check": "tsc --noEmit",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/albelium/kakujs.git"
   },
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "japanese",
+    "japan",
+    "typescript",
+    "data-handling",
+    "utilities"
+  ],
+  "author": "Albelium",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/albelium/kakujs/issues"
   },
-  "homepage": "https://github.com/albelium/kakujs#readme"
+  "homepage": "https://github.com/albelium/kakujs#readme",
+  "devDependencies": {
+    "@types/node": "^22",
+    "typescript": "5.8.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

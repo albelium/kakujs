@@ -1,2 +1,12 @@
+.idea
+node_modules
+dist
+*.log
+.DS_Store
+
 # mise
 .mise.local.toml
+
+# pnpm
+.pnpm-store
+.pnpm-debug.log
