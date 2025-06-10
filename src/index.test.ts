@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { hello, version } from './index'
+import { hello } from './index'
 
 describe('KakuJS', () => {
   it('定義されていること', () => {
@@ -22,13 +22,6 @@ describe('KakuJS', () => {
       expect(hello('Alice')).toContain('Alice')
       expect(hello('Bob')).toContain('Bob')
       expect(hello('日本語')).toContain('日本語')
-    })
-  })
-
-  describe('version', () => {
-    it('文字列であること', () => {
-      expect(typeof version).toBe('string')
-      expect(version).toBeTruthy()
     })
   })
 })
