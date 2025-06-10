@@ -7,6 +7,9 @@ pre-commit:
     type-check:
       glob: "*.{ts,tsx}"
       run: pnpm run type-check
+    format-package:
+      glob: "package.json"
+      run: pnpm run format:package
 
 commit-msg:
   commands:
