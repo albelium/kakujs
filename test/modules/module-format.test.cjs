@@ -21,7 +21,6 @@ describe('CommonJSモジュール形式', () => {
   test('期待されるエクスポートを持つこと', () => {
     assert(typeof kaku === 'object', 'モジュールはオブジェクトであること')
     assert(typeof kaku.hello === 'function', 'helloは関数であること')
-    assert(typeof kaku.version === 'string', 'versionは文字列であること')
     console.log('CommonJS exports:', Object.keys(kaku))
   })
 

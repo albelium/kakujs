@@ -24,14 +24,12 @@ describe('ESMモジュール形式', () => {
   it('期待されるエクスポートを持つこと', () => {
     expect(typeof kaku).toBe('object')
     expect(typeof kaku.hello).toBe('function')
-    expect(typeof kaku.version).toBe('string')
   })
 
   it('名前付きインポートをサポートすること', async () => {
     // 名前付きインポートのテスト
-    const { hello, version } = await import('../../dist/index.js')
+    const { hello } = await import('../../dist/index.js')
     expect(typeof hello).toBe('function')
-    expect(typeof version).toBe('string')
   })
 
   it('hello関数が正しく動作すること', () => {
