@@ -23,5 +23,10 @@ describe('KakuJS', () => {
       expect(hello('Bob')).toContain('Bob')
       expect(hello('日本語')).toContain('日本語')
     })
+
+    it('正確なフォーマットで挨拶を返すこと', () => {
+      const result = hello('World')
+      expect(result).toBe('Hello, World!')
+    })
   })
 })

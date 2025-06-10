@@ -32,11 +32,4 @@ describe('ESMモジュール形式', () => {
     expect(typeof hello).toBe('function')
   })
 
-  it('hello関数が正しく動作すること', () => {
-    const result = kaku.hello('World')
-    expect(typeof result).toBe('string')
-    expect(result).toContain('World')
-    expect(result).toContain('Hello')
-    console.log('ESM hello result:', result)
-  })
 })
