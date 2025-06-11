@@ -40,6 +40,16 @@ export default tseslint.config(
       'no-var': 'error',
       'object-shorthand': 'error',
       'prefer-template': 'error',
+      
+      // バレルファイル（index ファイル）からの import を禁止
+      'no-restricted-imports': ['error', {
+        patterns: [
+          {
+            group: ['./*/index', './*/index.ts', './*/index.js', '../*/index', '../*/index.ts', '../*/index.js'],
+            message: 'Barrel exports (index files) are not allowed. Import directly from the source file.'
+          }
+        ]
+      }],
     }
   },
   {
