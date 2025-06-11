@@ -4,138 +4,168 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue.svg)](https://www.typescriptlang.org/)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D22.16.0-brightgreen.svg)](https://nodejs.org/)
 
-TypeScript library for generating Japanese mock data. KakuJS provides utilities to generate realistic Japanese names, addresses, phone numbers, and other culturally-specific test data for your applications.
+日本語のモックデータを生成するための TypeScript ライブラリです。  
+KakuJS は、日本の名前、住所、電話番号、その他の文化的に特化したテストデータを生成するためのユーティリティを提供します。
 
-## Features
+## 特徴
 
-- 🎌 **Japanese-focused**: Built specifically for generating Japanese mock data
-- 🚀 **Lightweight**: Minimal dependencies, fast execution
-- 📦 **Dual module support**: Works with both ESM and CommonJS
-- 🔒 **Type-safe**: Written in TypeScript with full type definitions
-- 🧪 **Well-tested**: Comprehensive test coverage
+- 🎌 **日本向け**: 日本語のモックデータ生成に特化
+- 🚀 **軽量**: 最小限の依存関係、高速実行
+- 📦 **デュアルモジュール対応**: ESM と CommonJS の両方で動作
+- 🔒 **型安全**: TypeScript で書かれており、完全な型定義を提供
+- 🧪 **十分にテスト済み**: 包括的なテストカバレッジ
 
-## Installation
+## インストール
 
 ```bash
 npm install kakujs
 ```
 
-or
+または
 
 ```bash
 pnpm add kakujs
 ```
 
-or
+または
 
 ```bash
 yarn add kakujs
 ```
 
-## Usage
+## 使用方法
 
-### UUID Generation
+### UUID 生成
 
 ```typescript
-import { generateUUID } from 'kakujs';
+import { uuid } from 'kakujs';
 
-// Generate a random UUID v4
-const uuid = generateUUID();
-console.log(uuid); // e.g., "123e4567-e89b-12d3-a456-426614174000"
+// ランダムな UUID v4 を生成
+const id = uuid();
+console.log(id); // 例: "123e4567-e89b-12d3-a456-426614174000"
 ```
 
-### CommonJS Usage
+### 代替使用パターン
+
+```typescript
+// string モジュールを使用
+import { string } from 'kakujs';
+const id = string.uuid();
+
+// メイン kaku オブジェクトを使用
+import { kaku } from 'kakujs';
+const id = kaku.string.uuid();
+```
+
+### CommonJS での使用
 
 ```javascript
-const { generateUUID } = require('kakujs');
+const { uuid } = require('kakujs');
 
-const uuid = generateUUID();
-console.log(uuid);
+const id = uuid();
+console.log(id);
 ```
 
-## API Documentation
+## API ドキュメント
 
-### String Utilities
+### 文字列ユーティリティ
 
-#### `generateUUID(): string`
+#### `uuid(): string`
 
-Generates a random UUID v4 string using the Web Crypto API.
+Math.random() を使用してランダムな UUID v4 文字列を生成します。
 
-**Returns**: A string in the format `xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx`
+**戻り値**: `xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx` 形式の文字列
 
-**Example**:
+**例**:
 ```typescript
-const id = generateUUID();
+import { uuid } from 'kakujs';
+
+const id = uuid();
 // "550e8400-e29b-41d4-a716-446655440000"
 ```
 
-## Development
+**利用可能なインポートパターン**:
+```typescript
+// 直接関数をインポート
+import { uuid } from 'kakujs';
+uuid();
 
-### Prerequisites
+// string モジュールをインポート
+import { string } from 'kakujs';
+string.uuid();
 
-- [mise](https://mise.jdx.dev/) (will be installed automatically if not present)
+// メインオブジェクトをインポート
+import { kaku } from 'kakujs';
+kaku.string.uuid();
+```
+
+## 開発
+
+### 前提条件
+
+- [mise](https://mise.jdx.dev/) (存在しない場合は自動的にインストールされます)
 - Node.js >= 22.16.0
 - pnpm >= 10.11.1
 
-### Quick Start
+### クイックスタート
 
 ```bash
-# Clone the repository
+# リポジトリをクローン
 git clone https://github.com/albelium/kakujs.git
 cd kakujs
 
-# Run bootstrap (installs all tools and dependencies)
+# ブートストラップを実行（すべてのツールと依存関係をインストール）
 mise run bootstrap
-# or
+# または
 ./scripts/bootstrap.sh
 
-# Run tests
+# テストを実行
 pnpm test
 
-# Build the library
+# ライブラリをビルド
 pnpm build
 ```
 
-### Available Scripts
+### 利用可能なスクリプト
 
-- `pnpm test` - Run all tests
-- `pnpm test:watch` - Run tests in watch mode
-- `pnpm test:coverage` - Run tests with coverage report
-- `pnpm build` - Build the library for production
-- `pnpm lint` - Run ESLint
-- `pnpm lint:fix` - Run ESLint with auto-fix
-- `pnpm type-check` - Run TypeScript type checking
+- `pnpm test` - すべてのテストを実行
+- `pnpm test:watch` - ウォッチモードでテストを実行
+- `pnpm test:coverage` - カバレッジレポートと共にテストを実行
+- `pnpm build` - プロダクション用にライブラリをビルド
+- `pnpm lint` - ESLint を実行
+- `pnpm lint:fix` - 自動修正付きで ESLint を実行
+- `pnpm type-check` - TypeScript の型チェックを実行
 
-### Project Structure
+### プロジェクト構造
 
 ```
 kakujs/
-├── src/              # Source code
-│   └── modules/      # Feature modules
-│       └── string/   # String utilities
-├── test/             # Test files
-├── dist/             # Build output (generated)
-└── scripts/          # Utility scripts
+├── src/              # ソースコード
+│   └── modules/      # 機能モジュール
+│       └── string/   # 文字列ユーティリティ
+├── test/             # テストファイル
+├── dist/             # ビルド出力（生成されます）
+└── scripts/          # ユーティリティスクリプト
 ```
 
-## Contributing
+## コントリビューション
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+コントリビューションを歓迎します！詳細については [コントリビューションガイド](CONTRIBUTING.md) をご覧ください。
 
-### Development Workflow
+### 開発ワークフロー
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feat/amazing-feature`)
-3. Commit your changes using conventional commits (`git commit -m 'feat: add amazing feature'`)
-4. Push to the branch (`git push origin feat/amazing-feature`)
-5. Open a Pull Request
+1. リポジトリをフォーク
+2. 機能ブランチを作成 (`git checkout -b feat/amazing-feature`)
+3. conventional commits を使用して変更をコミット (`git commit -m 'feat: add amazing feature'`)
+4. ブランチにプッシュ (`git push origin feat/amazing-feature`)
+5. プルリクエストを開く
 
-## License
+## ライセンス
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+このプロジェクトは MIT ライセンスの下でライセンスされています。詳細については [LICENSE](LICENSE) ファイルをご覧ください。
 
-## Acknowledgments
+## 謝辞
 
-- Built with [TypeScript](https://www.typescriptlang.org/)
-- Tested with [Vitest](https://vitest.dev/)
-- Bundled with [tsup](https://tsup.egoist.dev/)
+- [TypeScript](https://www.typescriptlang.org/) でビルド
+- [Vitest](https://vitest.dev/) でテスト
+- [tsup](https://tsup.egoist.dev/) でバンドル
