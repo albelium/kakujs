@@ -43,9 +43,31 @@ export default tseslint.config(
     }
   },
   {
-    files: ['**/*.test.ts', '**/*.spec.ts'],
+    files: ['**/*.test.ts', '**/*.spec.ts', '**/*.test.mjs'],
+    languageOptions: {
+      globals: {
+        console: 'readonly'
+      }
+    },
     rules: {
       '@typescript-eslint/no-explicit-any': 'off',
+      'no-console': 'off'
+    }
+  },
+  {
+    files: ['**/*.test.cjs'],
+    languageOptions: {
+      globals: {
+        require: 'readonly',
+        __dirname: 'readonly',
+        console: 'readonly',
+        module: 'readonly',
+        exports: 'readonly',
+        process: 'readonly'
+      }
+    },
+    rules: {
+      '@typescript-eslint/no-require-imports': 'off',
       'no-console': 'off'
     }
   },
