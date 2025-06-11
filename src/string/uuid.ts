@@ -4,12 +4,11 @@
  * UUID v4 は完全にランダムな値で構成され、'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx' の形式で生成されます。
  * RFC 4122 の仕様に従い、バージョンビット（4）とバリアントビット（8, 9, A, B のいずれか）が正しく設定されます。
  *
- * @returns {string} ハイフン区切りの UUID v4 文字列
- *
  * @example
- * const id = string.uuid()
- * console.log(id) // '550e8400-e29b-41d4-a716-446655440000'
+ * kaku.string.uuid() // '550e8400-e29b-41d4-a716-446655440000'
+ *
  * @see https://tools.ietf.org/html/rfc4122 RFC 4122 仕様
+ *
  * @since 1.0.0
  */
 export function uuid(): string {
