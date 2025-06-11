@@ -35,11 +35,16 @@ pnpm install
  *
  * @param options - 料理生成のオプション
  * @param options.cuisine - 料理の種類 (例: 'japanese', 'italian')
+ *
  * @example
  * kaku.food.dish() // 'カレーライス'
  * kaku.food.dish({ cuisine: 'italian' }) // 'パスタアラビアータ'
- * @see {@link kaku.food.dessert} デザート生成
+ *
+ * @see kaku.food.dessert
+ *
  * @since 1.0.0
+ * 
+ * @deprecated Use `kaku.food.hoge()` instead.
  */
 function dish(options?: { cuisine?: string }): string {
   // 実装
