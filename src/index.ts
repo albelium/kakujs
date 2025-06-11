@@ -1,9 +1,9 @@
-import { string } from './string'
+import { string } from './modules/string'
 
 export const kaku = {
   string,
 }
 
-export { string } from './string'
+export { string } from './modules/string'
 
-export { uuid } from './string/uuid'
+export { uuid } from './modules/string/uuid'
