@@ -1,32 +1,27 @@
 import { describe, it, expect } from 'vitest'
-import { hello } from './index'
+import { string } from './index'
 
 describe('KakuJS', () => {
   it('定義されていること', () => {
     expect(true).toBe(true)
   })
 
-  describe('hello関数', () => {
-    it('関数であること', () => {
-      expect(typeof hello).toBe('function')
+  describe('string モジュール', () => {
+    it('string オブジェクトが定義されていること', () => {
+      expect(typeof string).toBe('object')
+      expect(string).toBeDefined()
     })
 
-    it('挨拶文字列を返すこと', () => {
-      const result = hello('World')
+    it('uuid 関数が存在すること', () => {
+      expect(typeof string.uuid).toBe('function')
+    })
+
+    it('string.uuid() が正しく動作すること', () => {
+      const result = string.uuid()
       expect(typeof result).toBe('string')
-      expect(result).toContain('Hello')
-      expect(result).toContain('World')
-    })
-
-    it('異なる名前でも正しく動作すること', () => {
-      expect(hello('Alice')).toContain('Alice')
-      expect(hello('Bob')).toContain('Bob')
-      expect(hello('日本語')).toContain('日本語')
-    })
-
-    it('正確なフォーマットで挨拶を返すこと', () => {
-      const result = hello('World')
-      expect(result).toBe('Hello, World!')
+      expect(result).toHaveLength(36)
+      const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
+      expect(result).toMatch(uuidRegex)
     })
   })
 })
