@@ -54,6 +54,7 @@
     "pre-commit": "lefthook run pre-commit",
     "prepare": "lefthook install",
     "prepublishOnly": "pnpm run build",
+    "test": "pnpm run test:modules && pnpm run test:run",
     "test:cjs": "node --test test/modules/module-format.test.cjs",
     "test:coverage": "vitest run --coverage",
     "test:esm": "vitest run --config vitest.config.esm.ts",

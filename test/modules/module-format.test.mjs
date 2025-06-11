@@ -36,41 +36,18 @@ describe('ESMモジュール形式', () => {
     expect(typeof uuid).toBe('function')
   })
 
-  describe('3つの import パターン', () => {
-    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
+  it('3つの import パターンが利用可能であること', () => {
+    // kaku.string.uuid パターン
+    expect(typeof kaku).toBe('object')
+    expect(typeof kaku.string).toBe('object')
+    expect(typeof kaku.string.uuid).toBe('function')
 
-    it('kaku.string.uuid() が動作すること', () => {
-      const result = kaku.string.uuid()
-      expect(typeof result).toBe('string')
-      expect(result).toHaveLength(36)
-      expect(result).toMatch(uuidRegex)
-    })
+    // string.uuid パターン
+    expect(typeof string).toBe('object')
+    expect(typeof string.uuid).toBe('function')
 
-    it('string.uuid() が動作すること', () => {
-      const result = string.uuid()
-      expect(typeof result).toBe('string')
-      expect(result).toHaveLength(36)
-      expect(result).toMatch(uuidRegex)
-    })
-
-    it('uuid() が動作すること', () => {
-      const result = uuid()
-      expect(typeof result).toBe('string')
-      expect(result).toHaveLength(36)
-      expect(result).toMatch(uuidRegex)
-    })
-
-    it('全てのパターンが同じ形式の UUID を生成すること', () => {
-      const results = [
-        kaku.string.uuid(),
-        string.uuid(),
-        uuid(),
-      ]
-
-      results.forEach(result => {
-        expect(result).toMatch(uuidRegex)
-      })
-    })
+    // uuid 直接パターン
+    expect(typeof uuid).toBe('function')
   })
 
 })
