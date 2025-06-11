@@ -24,4 +24,5 @@ describe('KakuJS', () => {
       expect(result).toMatch(uuidRegex)
     })
   })
+
 })

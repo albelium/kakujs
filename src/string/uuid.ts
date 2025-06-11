@@ -7,13 +7,8 @@
  * @returns {string} ハイフン区切りの UUID v4 文字列
  *
  * @example
- * ```typescript
- * import { string } from 'kakujs'
- *
  * const id = string.uuid()
  * console.log(id) // '550e8400-e29b-41d4-a716-446655440000'
- * ```
- *
  * @see https://tools.ietf.org/html/rfc4122 RFC 4122 仕様
  * @since 1.0.0
  */
