@@ -7,29 +7,47 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 
 describe('ESMモジュール形式', () => {
   let kaku
+  let string
+  let uuid
+  let kakuExport
 
-  beforeAll(() => {
+  beforeAll(async () => {
     const distPath = join(__dirname, '../../dist/index.js')
     if (!existsSync(distPath)) {
       throw new Error('Build output not found. Run "pnpm build" first.')
     }
+
+    // ESMのdynamic importでインポート
+    const module = await import('../../dist/index.js')
+    kaku = module.kaku
+    string = module.string
+    uuid = module.uuid
+    kakuExport = module
   })
 
-  it('ESMモジュールを読み込めること', async () => {
-    // ESMのdynamic importでインポート
-    kaku = await import('../../dist/index.js')
-    expect(kaku).toBeDefined()
+  it('ESMモジュールを読み込めること', () => {
+    expect(kakuExport).toBeDefined()
   })
 
   it('期待されるエクスポートを持つこと', () => {
+    expect(typeof kakuExport).toBe('object')
     expect(typeof kaku).toBe('object')
-    expect(typeof kaku.hello).toBe('function')
+    expect(typeof string).toBe('object')
+    expect(typeof uuid).toBe('function')
   })
 
-  it('名前付きインポートをサポートすること', async () => {
-    // 名前付きインポートのテスト
-    const { hello } = await import('../../dist/index.js')
-    expect(typeof hello).toBe('function')
+  it('3つの import パターンが利用可能であること', () => {
+    // kaku.string.uuid パターン
+    expect(typeof kaku).toBe('object')
+    expect(typeof kaku.string).toBe('object')
+    expect(typeof kaku.string.uuid).toBe('function')
+
+    // string.uuid パターン
+    expect(typeof string).toBe('object')
+    expect(typeof string.uuid).toBe('function')
+
+    // uuid 直接パターン
+    expect(typeof uuid).toBe('function')
   })
 
 })

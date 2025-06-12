@@ -1,11 +1,10 @@
-// Node.jsのtest runnerを使用
 const { test, describe } = require('node:test')
 const assert = require('node:assert')
 const { existsSync } = require('fs')
 const { join } = require('path')
 
 describe('CommonJSモジュール形式', () => {
-  let kaku
+  let module
 
   test('CommonJSモジュールを読み込めること', () => {
     const distPath = join(__dirname, '../../dist/index.cjs')
@@ -13,20 +12,30 @@ describe('CommonJSモジュール形式', () => {
       throw new Error('Build output not found. Run "pnpm build" first.')
     }
 
-    // CommonJSのrequireでインポート
-    kaku = require('../../dist/index.cjs')
-    assert(kaku !== undefined, 'モジュールが読み込まれること')
+    module = require('../../dist/index.cjs')
+    assert(module !== undefined, 'モジュールが読み込まれること')
   })
 
   test('期待されるエクスポートを持つこと', () => {
-    assert(typeof kaku === 'object', 'モジュールはオブジェクトであること')
-    assert(typeof kaku.hello === 'function', 'helloは関数であること')
-    console.log('CommonJS exports:', Object.keys(kaku))
+    assert(typeof module === 'object', 'モジュールはオブジェクトであること')
+    assert(typeof module.kaku === 'object', 'kakuオブジェクトが存在すること')
+    assert(typeof module.string === 'object', 'stringオブジェクトが存在すること')
+    assert(typeof module.uuid === 'function', 'uuid関数が存在すること')
+    console.log('CommonJS exports:', Object.keys(module))
   })
 
-  test('ESモジュールのプロパティを持たないこと', () => {
-    // CommonJSモジュールには__esmプロパティがないことを確認
-    assert(kaku.__esModule === undefined, '__esModuleプロパティが存在しないこと')
+  test('3つの import パターンが利用可能であること', () => {
+    // kaku.string.uuid パターン
+    assert(typeof module.kaku === 'object', 'kakuオブジェクトが存在すること')
+    assert(typeof module.kaku.string === 'object', 'kaku.stringオブジェクトが存在すること')
+    assert(typeof module.kaku.string.uuid === 'function', 'kaku.string.uuid関数が存在すること')
+
+    // string.uuid パターン
+    assert(typeof module.string === 'object', 'stringオブジェクトが存在すること')
+    assert(typeof module.string.uuid === 'function', 'string.uuid関数が存在すること')
+
+    // uuid 直接パターン
+    assert(typeof module.uuid === 'function', 'uuid関数が直接エクスポートされていること')
   })
 
 })
