@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
-describe('ESMモジュール形式', () => {
+describe('ESM モジュール形式', () => {
   let kaku
   let string
   let uuid
@@ -17,7 +17,6 @@ describe('ESMモジュール形式', () => {
       throw new Error('Build output not found. Run "pnpm build" first.')
     }
 
-    // ESMのdynamic importでインポート
     const module = await import('../../dist/index.js')
     kaku = module.kaku
     string = module.string
@@ -25,7 +24,7 @@ describe('ESMモジュール形式', () => {
     kakuExport = module
   })
 
-  it('ESMモジュールを読み込めること', () => {
+  it('ESM モジュールを読み込めること', () => {
     expect(kakuExport).toBeDefined()
   })
 
@@ -36,7 +35,7 @@ describe('ESMモジュール形式', () => {
     expect(typeof uuid).toBe('function')
   })
 
-  it('3つの import パターンが利用可能であること', () => {
+  it('複数 import パターンが利用可能であること', () => {
     // kaku.string.uuid パターン
     expect(typeof kaku).toBe('object')
     expect(typeof kaku.string).toBe('object')
