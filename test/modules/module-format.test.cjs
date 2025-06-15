@@ -19,23 +19,24 @@ describe('CommonJS モジュール形式', () => {
   test('期待されるエクスポートを持つこと', () => {
     assert(typeof module === 'object', 'モジュールはオブジェクトであること')
     assert(typeof module.kaku === 'object', 'kaku オブジェクトが存在すること')
-    assert(typeof module.string === 'object', 'string オブジェクトが存在すること')
-    assert(typeof module.uuid === 'function', 'uuid 関数が存在すること')
-    console.log('CommonJS exports:', Object.keys(module))
-  })
 
-  test('複数の import パターンが利用可能であること', () => {
-    // kaku.string.uuid パターン
-    assert(typeof module.kaku === 'object', 'kaku オブジェクトが存在すること')
+    // kaku オブジェクトから import
+    assert(typeof module.kaku.food === 'object', 'kaku.food オブジェクトが存在すること')
+    assert(typeof module.kaku.food.fruit === 'function', 'kaku.food.fruit 関数が存在すること')
+
     assert(typeof module.kaku.string === 'object', 'kaku.string オブジェクトが存在すること')
     assert(typeof module.kaku.string.uuid === 'function', 'kaku.string.uuid 関数が存在すること')
 
-    // string.uuid パターン
+    // モジュール単位で import
+    assert(typeof module.food === 'object', 'food オブジェクトが存在すること')
+    assert(typeof module.food.fruit === 'function', 'food.fruit 関数が存在すること')
     assert(typeof module.string === 'object', 'string オブジェクトが存在すること')
     assert(typeof module.string.uuid === 'function', 'string.uuid 関数が存在すること')
 
-    // uuid 直接パターン
-    assert(typeof module.uuid === 'function', 'uuid 関数が直接エクスポートされていること')
-  })
+    // 関数単位で import
+    assert(typeof module.fruit === 'function', 'fruit 関数が存在すること')
+    assert(typeof module.uuid === 'function', 'uuid 関数が存在すること')
 
+    console.log('CommonJS exports:', Object.keys(module))
+  })
 })
