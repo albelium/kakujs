@@ -1,8 +1,9 @@
 import js from '@eslint/js'
 import stylistic from '@stylistic/eslint-plugin'
 import tseslint from 'typescript-eslint'
+import type { ConfigArray } from 'typescript-eslint'
 
-export default tseslint.config(
+const config: ConfigArray = tseslint.config(
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
@@ -14,7 +15,7 @@ export default tseslint.config(
       '@typescript-eslint/no-unused-vars': 'error',
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/explicit-module-boundary-types': 'warn',
-      
+
       // スタイル関連（@stylistic/eslint-plugin）
       '@stylistic/indent': ['error', 2],
       '@stylistic/quotes': ['error', 'single'],
@@ -32,7 +33,7 @@ export default tseslint.config(
         named: 'never',
         asyncArrow: 'always'
       }],
-      
+
       // 一般的なルール
       'no-console': 'warn',
       'no-debugger': 'error',
@@ -40,7 +41,7 @@ export default tseslint.config(
       'no-var': 'error',
       'object-shorthand': 'error',
       'prefer-template': 'error',
-      
+
       // バレルファイル（index ファイル）からの import を禁止
       'no-restricted-imports': ['error', {
         patterns: [
@@ -82,6 +83,8 @@ export default tseslint.config(
     }
   },
   {
-    ignores: ['dist/**', 'node_modules/**', 'coverage/**', '*.config.js']
+    ignores: ['dist/**', 'node_modules/**', 'coverage/**', '*.config.js', '*.config.ts', '*.config.mts', '*.config.cts']
   }
 )
+
+export default config
