@@ -6,10 +6,7 @@ import { fileURLToPath } from 'url'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 describe('ESM モジュール形式', () => {
-  let kaku
-  let string
-  let uuid
-  let kakuExport
+  let module
 
   beforeAll(async () => {
     const distPath = join(__dirname, '../../dist/index.js')
@@ -17,36 +14,34 @@ describe('ESM モジュール形式', () => {
       throw new Error('Build output not found. Run "pnpm build" first.')
     }
 
-    const module = await import('../../dist/index.js')
-    kaku = module.kaku
-    string = module.string
-    uuid = module.uuid
-    kakuExport = module
+    module = await import('../../dist/index.js')
   })
 
   it('ESM モジュールを読み込めること', () => {
-    expect(kakuExport).toBeDefined()
+    expect(module).toBeDefined()
   })
 
   it('期待されるエクスポートを持つこと', () => {
-    expect(typeof kakuExport).toBe('object')
-    expect(typeof kaku).toBe('object')
-    expect(typeof string).toBe('object')
-    expect(typeof uuid).toBe('function')
+    expect(typeof module).toBe('object')
+    expect(typeof module.kaku).toBe('object')
+
+    // kaku オブジェクトから import
+    expect(typeof module.kaku.food).toBe('object')
+    expect(typeof module.kaku.food.fruit).toBe('function')
+
+    expect(typeof module.kaku.string).toBe('object')
+    expect(typeof module.kaku.string.uuid).toBe('function')
+
+    // モジュール単位で import
+    expect(typeof module.food).toBe('object')
+    expect(typeof module.food.fruit).toBe('function')
+    expect(typeof module.string).toBe('object')
+    expect(typeof module.string.uuid).toBe('function')
+
+    // 関数単位で import
+    expect(typeof module.fruit).toBe('function')
+    expect(typeof module.uuid).toBe('function')
+
+    console.log('ESM exports:', Object.keys(module))
   })
-
-  it('複数 import パターンが利用可能であること', () => {
-    // kaku.string.uuid パターン
-    expect(typeof kaku).toBe('object')
-    expect(typeof kaku.string).toBe('object')
-    expect(typeof kaku.string.uuid).toBe('function')
-
-    // string.uuid パターン
-    expect(typeof string).toBe('object')
-    expect(typeof string.uuid).toBe('function')
-
-    // uuid 直接パターン
-    expect(typeof uuid).toBe('function')
-  })
-
 })
