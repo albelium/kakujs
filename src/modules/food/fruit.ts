@@ -1,4 +1,4 @@
-import { fruit as fruitDefinitions } from '../../definitions/fruit'
+import { fruit as fruitDefinitions } from '../../definitions/food/fruit'
 import { getRandomElement } from '../../utils/array'
 
 /**
