@@ -9,5 +9,6 @@ export const kaku = {
 export { food } from './modules/food'
 export { string } from './modules/string'
 
+export { adjective } from './modules/food/adjective'
 export { fruit } from './modules/food/fruit'
 export { uuid } from './modules/string/uuid'
