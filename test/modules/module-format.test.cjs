@@ -22,6 +22,7 @@ describe('CommonJS モジュール形式', () => {
 
     // kaku オブジェクトから import
     assert(typeof module.kaku.food === 'object', 'kaku.food オブジェクトが存在すること')
+    assert(typeof module.kaku.food.adjective === 'function', 'kaku.food.adjective 関数が存在すること')
     assert(typeof module.kaku.food.fruit === 'function', 'kaku.food.fruit 関数が存在すること')
 
     assert(typeof module.kaku.string === 'object', 'kaku.string オブジェクトが存在すること')
@@ -29,11 +30,13 @@ describe('CommonJS モジュール形式', () => {
 
     // モジュール単位で import
     assert(typeof module.food === 'object', 'food オブジェクトが存在すること')
+    assert(typeof module.food.adjective === 'function', 'food.adjective 関数が存在すること')
     assert(typeof module.food.fruit === 'function', 'food.fruit 関数が存在すること')
     assert(typeof module.string === 'object', 'string オブジェクトが存在すること')
     assert(typeof module.string.uuid === 'function', 'string.uuid 関数が存在すること')
 
     // 関数単位で import
+    assert(typeof module.adjective === 'function', 'adjective 関数が存在すること')
     assert(typeof module.fruit === 'function', 'fruit 関数が存在すること')
     assert(typeof module.uuid === 'function', 'uuid 関数が存在すること')
 

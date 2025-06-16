@@ -27,6 +27,7 @@ describe('ESM モジュール形式', () => {
 
     // kaku オブジェクトから import
     expect(typeof module.kaku.food).toBe('object')
+    expect(typeof module.kaku.food.adjective).toBe('function')
     expect(typeof module.kaku.food.fruit).toBe('function')
 
     expect(typeof module.kaku.string).toBe('object')
@@ -34,11 +35,13 @@ describe('ESM モジュール形式', () => {
 
     // モジュール単位で import
     expect(typeof module.food).toBe('object')
+    expect(typeof module.food.adjective).toBe('function')
     expect(typeof module.food.fruit).toBe('function')
     expect(typeof module.string).toBe('object')
     expect(typeof module.string.uuid).toBe('function')
 
     // 関数単位で import
+    expect(typeof module.adjective).toBe('function')
     expect(typeof module.fruit).toBe('function')
     expect(typeof module.uuid).toBe('function')
 
